@@ -1,11 +1,14 @@
 package io.pugg.controller;
 
 
+import io.pugg.dto.NFTDataResp;
 import io.pugg.dto.TokenBalanceResp;
 import io.pugg.service.ITokenService;
 import io.pugg.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/token")
@@ -31,9 +34,8 @@ public class CommonController {
     @GetMapping("/nft-balance/{address}")
     public Result queryUserNftBalance(@PathVariable String address) throws Exception {
         String action = "queryUserNftBalance";
-         tokenService.queryUserNFTBalance(address);
-
-        return new Result(action, 0, "SUCCESS", "tokenBalanceResp");
+        List<NFTDataResp> nftDataRespList = tokenService.queryUserNFTBalance(address);
+        return new Result(action, 0, "SUCCESS", nftDataRespList);
     }
 
 
