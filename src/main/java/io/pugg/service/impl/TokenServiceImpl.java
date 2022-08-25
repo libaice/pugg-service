@@ -63,10 +63,11 @@ public class TokenServiceImpl implements ITokenService {
                 JSONObject oneData = (JSONObject) data.get(i);
                 String logoUrl = oneData.getString("logo_url");
                 String ownAmount = oneData.getString("owns_total");
+                String contractAddress = oneData.getString("contract_address");
                 String contractName = oneData.getString("contract_name");
                 String tradingPrice = ((JSONObject) oneData.getJSONArray("assets").get(0)).getString("latest_trade_price");
                 tradingPrice = tradingPrice == null ? "0" : tradingPrice;
-                NFTDataResp nftDataResp = NFTDataResp.builder().contractName(contractName).logoUrl(logoUrl).ownAmount(ownAmount).tradingPrice(tradingPrice).build();
+                NFTDataResp nftDataResp = NFTDataResp.builder().contractName(contractName).logoUrl(logoUrl).ownAmount(ownAmount).tradingPrice(tradingPrice).contractAddress(contractAddress).build();
                 nftDataRespList.add(nftDataResp);
             }
         }

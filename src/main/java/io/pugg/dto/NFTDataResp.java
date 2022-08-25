@@ -10,4 +10,5 @@ public class NFTDataResp {
     private String ownAmount;
     private String contractName;
     private String tradingPrice;
+    private String contractAddress;
 }
