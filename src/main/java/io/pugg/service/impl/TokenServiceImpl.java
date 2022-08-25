@@ -70,6 +70,8 @@ public class TokenServiceImpl implements ITokenService {
                 nftDataRespList.add(nftDataResp);
             }
         }
+        nftDataRespList.sort((v1, v2) -> Double.compare(Double.parseDouble(v2.getTradingPrice()), Double.parseDouble(v1.getTradingPrice())));
+        nftDataRespList = nftDataRespList.subList(0, 5);
         return nftDataRespList;
     }
 }
